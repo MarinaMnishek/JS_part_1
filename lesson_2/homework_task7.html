@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Задание 7
+        // Сравнить null и 0
+        var a = null;
+        var b = 0;
+        alert(typeof a); //object
+        alert(typeof b); //number
+        alert(a > b); //false
+        alert(a < b); //false
+        alert(a == b); //false
+        alert(a >= b); //true
+
+        var c = Number(a);
+        alert(c); //0
+        alert(c > b); //false
+        alert(c < b); //false
+        alert(c == b); //true
+
+
+        /*
+        Все операторы сравнения возвращают значение логического типа. Сравнения преобразуют null в число (0). Поэтому < или > возвращают false (0 < 0, 0 > 0), а >= true. Нестрогое равенство == возвращает false т.к. действует особое правило: значение null ни к чему не приводится и не равно ничему другому. А вот после явного преобразования с помощью Number уже будет true.
+        */
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
