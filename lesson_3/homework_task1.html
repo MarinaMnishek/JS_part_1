@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //Создание массива чисел из данного промежутка
+        var arr = [];
+        var n = 0;
+
+        while (n <= 100) {
+            n++;
+            arr.push(n);
+        }
+        document.write(arr + "<br>");
+
+
+        //удаление четных чисел
+        var a = 2;
+        var b = 2;
+        while (a <= 100) {
+            a = a + b;
+            arr.splice(arr.indexOf(a), 1);
+        }
+        document.write(arr + "<br>");
+
+        //удаление чисел, делящихся на 3    
+        var a = 4;
+        var b = 3;
+        while (a < 100) {
+            if (a % b === 0 && arr.indexOf(a) !== -1) {
+                arr.splice(arr.indexOf(a), 1);
+            } else {
+                a++;
+            }
+        }
+        document.write(arr + "<br>");
+
+
+        //удаление чисел, делящихся на 5    
+        var a = 6;
+        var b = 5;
+        while (a < 100) {
+            if (a % b === 0 && arr.indexOf(a) !== -1) {
+                arr.splice(arr.indexOf(a), 1);
+            } else {
+                a++;
+            }
+        }
+        document.write(arr + "<br>");
+
+        //удаление чисел, делящихся на 7   
+        var a = 8;
+        var b = 7;
+        while (a < 100) {
+            if (a % b === 0 && arr.indexOf(a) !== -1) {
+                arr.splice(arr.indexOf(a), 1);
+            } else {
+                a++;
+            }
+        }
+        document.write("Простые числа: " + arr + "<br>");
+
+
+
+
+
+    </script>
+</body>
+
+</html>
