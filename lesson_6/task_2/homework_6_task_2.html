@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Homework_6_Task_2</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="basket">
+            <!-- <div class="item_1">
+                <p>Товар 1</p>
+                <p class="price">Цена: <span>100</span> </p>
+            </div> -->
+            <div class="sum_basket">Общая стоимость товаров в корзине: <span class="sumBasket">0</span></div>
+        </div>
+
+        <div class="goods">
+            <div class="good_1">
+                <h4>Товар 1</h4>
+                <img src="img/i1.jpg" alt="good_1">
+                <p class="price">Цена: <span>100</span> </p>
+                <button class="button">Купить</button>
+            </div>
+            <div class="good_2">
+                <h4>Товар 2</h4>
+                <img src="img/i2.jpg" alt="good_2">
+                <p class="price">Цена: <span>200</span></p>
+                <button class="button">Купить</button>
+            </div>
+            <div class="good_3">
+                <h4>Товар 3</h4>
+                <img src="img/i3.jpg" alt="good_3">
+                <p class="price">Цена: <span>300</span></p>
+                <button class="button">Купить</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var sumBasket = 0;
+
+        function recalcSum(item_price) {
+
+            var spanSumBasket = document.getElementsByClassName("sumBasket");
+            sumBasket = +sumBasket + +item_price;
+            console.log(spanSumBasket);
+            spanSumBasket[0].innerText = sumBasket;
+        }
+
+
+
+        function createItemInBasket(item_name, item_price) {
+            var basket = document.getElementsByClassName("basket");
+
+            var divItem1 = document.createElement("div");
+            divItem1.classList.add("item_1");
+
+            var divItem1Pname = document.createElement("p");
+            divItem1Pname.append(item_name);
+
+            var divItem1Pprice = document.createElement("p");
+            divItem1Pprice.classList.add("price");
+
+            var spanPrice = document.createElement("span");
+            spanPrice.append(item_price);
+
+
+
+            divItem1.append(divItem1Pname);
+            divItem1.append(divItem1Pprice);
+
+            divItem1Pprice.append(spanPrice);
+            divItem1.append(divItem1Pname);
+            divItem1.append(divItem1Pprice);
+            basket[0].append(divItem1);
+        }
+
+        function onButtonClick(event) {
+            this.disabled = true;
+            console.log(event);
+            var parentOfButton = event.target.parentElement;
+            var item_name = parentOfButton.children[0].innerText;
+            var item_price = event.target.parentElement.children[2].children[0].innerText;
+            createItemInBasket(item_name, item_price);
+            recalcSum(item_price);
+
+        }
+
+        var button = document.getElementsByClassName("button");
+        for (var i = 0; i < button.length; i++) {
+            button[i].onclick = onButtonClick;
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

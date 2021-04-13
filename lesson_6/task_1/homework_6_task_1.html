@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Homework_6_Task_1</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="small">
+            <img id="i1" src="small_img/i1.jpg" alt="img_1" class="img_s">
+            <img id="i2" src="small_img/i2.jpg" alt="img_2" class="img_s">
+            <img id="i3" src="small_img/i3.jpg" alt="img_3" class="img_s">
+        </div>
+        <div id="big_img" class="big">
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+
+        function init() {
+            var images = document.getElementsByTagName("img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = changeBigPicture;
+            }
+        }
+        function changeBigPicture(eventObj) {
+            var appDiv = document.getElementById("big_img");
+            appDiv.innerHTML = "";
+            var eventElement = eventObj.target;
+            var imageNameParts = eventElement.id.split("");
+            var src = "big_img/i" + imageNameParts[1] + ".jpg";
+            var imageDomElement = document.createElement("img");
+            imageDomElement.src = src;
+            appDiv.appendChild(imageDomElement);
+
+            imageDomElement.onerror = function () {
+                alert("Ошибка загрузки фото");
+            }
+
+        }
+
+        init();
+
+
+
+    </script>
+</body>
+
+</html>
