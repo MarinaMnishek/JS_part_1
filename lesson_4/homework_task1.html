@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var number = prompt("Введите число от 0 до 999");
+        console.log("Число " + number + "\n");
+        var obj = {};
+
+        function doObject(num) {
+            //В задаче не указано, что нужно сделать при вводе отрцательного числа. Мне кажется, что такая проверка должна быть. Можно также вывести пустой объект, но я решила сделать что-то другое=)
+            while (num < 0) {
+                console.log("Вы ввели некорректное занчение");
+                num = prompt("Введите число от 0 до 999");
+            }
+            if (num > 999) {
+                console.log("Вы ввели некорректное занчение");
+                return obj;
+            }
+
+
+            if (num.length == 1) {
+                obj['единицы'] = num[0];
+                obj['десятки'] = "0";
+                obj['сотни'] = "0";
+            } else if (num.length == 2) {
+                obj['единицы'] = num[1];
+                obj['десятки'] = num[0];
+                obj['сотни'] = "0";
+            } else {
+                obj['единицы'] = num[2];
+                obj['десятки'] = num[1];
+                obj['сотни'] = num[0];
+            }
+
+            return obj;
+        }
+
+        console.log(doObject(number));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var questions = {
+            a00: "На чём играл крокодил Гена у прохожих на виду? \n",
+            a0: 100,
+            a1: "1 На гитаре \n",
+            a2: "2 На гармошке \n",
+            a3: "3 На пиле \n",
+            a4: "4 На нервах \n",
+            b00: "Что Вячеслав Добрынин умолял не сыпать ему на рану в одной из своих песен? \n",
+            b0: 200,
+            b1: "1 Соль \n",
+            b2: "2 Сахар \n",
+            b3: "3 Перец \n",
+            b4: "4 Хмели-Сунели \n",
+            c00: "Как называется популярная российская рок-группа? \n",
+            c0: 300,
+            c1: "1 Лепрозорий \n",
+            c2: "2 Планетарий \n",
+            c3: "3 Крематорий \n",
+            c4: "4 Санаторий \n",
+            d00: "Что делает парикмахер на голове клиента? \n",
+            d0: 400,
+            d1: "1 Завивку \n",
+            d2: "2 Подливку \n",
+            d3: "3 Отливку \n",
+            d4: "4 Наливку \n",
+            e00: "Что потерял друг Винни-Пуха ослик Иа-Иа? \n",
+            e0: 500,
+            e1: "1 Гриву \n",
+            e2: "2 Совесть \n",
+            e3: "3 Деньги \n",
+            e4: "4 Хвост \n",
+        }
+
+        alert("Вы являетесь участником игры \"Кто хочет стать миллионером?\"\n Готовы попробовать?");
+
+        var event;
+        var sum = 0;
+
+
+        event = prompt("Вопрос на " + questions.a0 + " единиц \n" + questions.a00 + "Варианты ответов: \n" + questions.a1 + questions.a2 + questions.a3 + questions.a4 + "Введите номер ответа" + "\n" + "-1 - Выход из игры");
+
+        for (var i = 0; i < 5; i++) {
+            if (event == 2) {
+                alert("Это правильный ответ!");
+                sum += questions.a0;
+                alert("Ваш выигрыш: " + sum + " единиц");
+                i++;
+            } else if (event == -1) {
+                alert("Игра окончена");
+                break;
+            } else if (event == 1 || event == 3 || event == 4) {
+                alert("Неправильный ответ. Начните заново");
+                break;
+            } else {
+                alert("Вы ввели некорректное число. Начните заново");
+                break;
+            }
+
+
+            event = prompt("Вопрос на " + questions.b0 + " единиц \n" + questions.b00 + "Варианты ответов: \n" + questions.b1 + questions.b2 + questions.b3 + questions.b4 + "Введите номер ответа" + "\n" + "-1 - Выход из игры");
+
+            if (event == 1) {
+                alert("Это правильный ответ!");
+                sum += questions.b0;
+                alert("Ваш выигрыш: " + sum + " единиц");
+                i++;
+            } else if (event == -1) {
+                alert("Игра окончена");
+                break;
+            } else if (event == 2 || event == 3 || event == 4) {
+                alert("Неправильный ответ. Начните заново");
+                break;
+            } else {
+                alert("Вы ввели некорректное число. Начните заново");
+                break;
+            }
+
+            event = prompt("Вопрос на " + questions.c0 + " единиц \n" + questions.c00 + "Варианты ответов: \n" + questions.c1 + questions.c2 + questions.c3 + questions.c4 + "Введите номер ответа" + "\n" + "-1 - Выход из игры");
+
+            if (event == 3) {
+                alert("Это правильный ответ!");
+                sum += questions.c0;
+                alert("Ваш выигрыш: " + sum + " единиц");
+                i++;
+            } else if (event == -1) {
+                alert("Игра окончена");
+                break;
+            } else if (event == 1 || event == 2 || event == 4) {
+                alert("Неправильный ответ. Начните заново");
+                break;
+            } else {
+                alert("Вы ввели некорректное число. Начните заново");
+                break;
+            }
+
+
+            event = prompt("Вопрос на " + questions.d0 + " единиц \n" + questions.d00 + "Варианты ответов: \n" + questions.d1 + questions.d2 + questions.d3 + questions.d4 + "Введите номер ответа" + "\n" + "-1 - Выход из игры");
+
+            if (event == 1) {
+                alert("Это правильный ответ!");
+                sum += questions.d0;
+                alert("Ваш выигрыш: " + sum + " единиц");
+                i++;
+            } else if (event == -1) {
+                alert("Игра окончена");
+                break;
+            } else if (event == 2 || event == 3 || event == 4) {
+                alert("Неправильный ответ. Начните заново");
+                break;
+            } else {
+                alert("Вы ввели некорректное число. Начните заново");
+                break;
+            }
+
+
+
+            event = prompt("Вопрос на " + questions.e0 + " единиц \n" + questions.e00 + "Варианты ответов: \n" + questions.e1 + questions.e2 + questions.e3 + questions.e4 + "Введите номер ответа" + "\n" + "-1 - Выход из игры");
+
+            if (event == 4) {
+                alert("Это правильный ответ!");
+                sum += questions.e0;
+                alert("Ваш выигрыш: " + sum + " единиц");
+                i++;
+            } else if (event == -1) {
+                alert("Игра окончена");
+                break;
+            } else if (event == 1 || event == 2 || event == 3) {
+                alert("Неправильный ответ. Начните заново");
+                break;
+            } else {
+                alert("Вы ввели некорректное число. Начните заново");
+                break;
+            }
+
+            alert("Игра окончена. Спасибо за участие!")
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
