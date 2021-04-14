@@ -8,6 +8,8 @@ var gameIsRunning = false; // Запущена ли игра
 var snake_timer; // Таймер змейки
 var food_timer; // Таймер для еды
 var score = 0; // Результат
+var timerId; // для остановки появления бомб
+var numBomb = 3 //максимальное количество бомб на поле
 
 function init() {
     prepareGameField(); // Генерация поля
@@ -62,12 +64,15 @@ function prepareGameField() {
 /**
  * Старт игры
  */
+
 function startGame() {
     gameIsRunning = true;
     respawn();//создали змейку
 
     snake_timer = setInterval(move, SNAKE_SPEED);//каждые 200мс запускаем функцию move
-    setTimeout(createFood, 5000);
+    setTimeout(createFood, 3000);
+    timerId = setInterval(createProblem, 4000); //создание бомб, количество которых на поле увеличивается.Т.е. при создании следующей бомбы, предыдущаяя остается на поле
+
 }
 
 /**
@@ -124,7 +129,7 @@ function move() {
     // 1) new_unit не часть змейки
     // 2) Змейка не ушла за границу поля
     //console.log(new_unit);
-    if (!isSnakeUnit(new_unit) && new_unit !== undefined) {
+    if (!isSnakeUnit(new_unit) && new_unit !== undefined && !isProblem(new_unit)) {
         // Добавление новой части змейки
         new_unit.setAttribute('class', new_unit.getAttribute('class') + ' snake-unit');
         snake.push(new_unit);
@@ -140,7 +145,11 @@ function move() {
         }
     }
     else {
+        clearInterval(timerId);
+
         finishTheGame();
+
+
     }
 }
 
@@ -177,6 +186,23 @@ function haveFood(unit) {
     }
     return check;
 }
+/**
+ * Проверка бомбы
+ */
+function isProblem(unit) {
+    var check = false;
+
+    var unit_classes = unit.getAttribute('class').split(' ');
+
+    // Если бомба и не еда
+    if (!unit_classes.includes('food-unit') && unit_classes.includes('problem-unit')) {
+        check = true;
+        createProblem();
+    }
+
+    return check;
+}
+
 
 /**
  * Создание еды
@@ -206,11 +232,47 @@ function createFood() {
 }
 
 /**
+ * Создание бомбы
+ */
+function createProblem() {
+    var problemCreated = false;
+
+    while (!problemCreated) { //пока бомбу не создали
+        // рандом
+        var problem_x = Math.floor(Math.random() * FIELD_SIZE_X);
+        var problem_y = Math.floor(Math.random() * FIELD_SIZE_Y);
+
+        var problem_cell = document.getElementsByClassName('cell-' + problem_y + '-' + problem_x)[0];
+        var problem_cell_classes = problem_cell.getAttribute('class').split(' ');
+
+        // проверка на змейку
+        if (!problem_cell_classes.includes('snake-unit')) {
+            var classes = '';
+            for (var i = 0; i < problem_cell_classes.length; i++) {
+                classes += problem_cell_classes[i] + ' ';
+            }
+
+            problem_cell.setAttribute('class', classes + 'problem-unit');
+            problemCreated = true;
+        }
+        //ограничение количества бомб на поле
+        var problem_unit_cell = document.getElementsByClassName("problem-unit");
+        console.log(problem_unit_cell.length);
+
+        if (problem_unit_cell.length >= numBomb) {
+            clearInterval(timerId);
+        }
+
+    }
+
+}
+
+/**
  * Изменение направления движения змейки
  * @param e - событие
  */
 function changeDirection(e) {
-    console.log(e);
+    //console.log(e);
     switch (e.keyCode) {
         case 37: // Клавиша влево
             if (direction != 'x+') {
