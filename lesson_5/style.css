@@ -1,0 +1,13 @@
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+tr, td {
+    background-color: rgb(218, 211, 185);
+    width: 30px;
+    height: 30px;
+    
+}
+.rotate {
+    transform: rotate(-180deg);
+}
