@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var basket = [
+            {
+                title: "Товар 1",
+                price: 200,
+                count: 2
+            },
+            {
+                title: "Товар 2",
+                price: 100,
+                count: 3
+            },
+            {
+                title: "Товар 3",
+                price: 300,
+                count: 5
+            },
+        ];
+
+        var sum = 0;
+        for (var item of basket) {
+            sum = sum + item.price * item.count;
+        }
+        document.write("Сумма ваших покупок составляет " + sum + "<br>");
+
+
+        function countBasketPrice(arrayBasket) {
+            var sum = 0;
+            for (var item of arrayBasket) {
+                sum = sum + item.price * item.count;
+            }
+            return sum;
+        }
+        document.write(countBasketPrice(basket));
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
