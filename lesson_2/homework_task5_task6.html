@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function sum(a, b) {
+            return a + b;
+        }
+        function subtracting(a, b) {
+            return a - b;
+        }
+        function multiplication(a, b) {
+            return a * b;
+        }
+        function division(a, b) {
+            return a / b;
+        }
+
+
+        document.write(sum(2, 3) + "<br>");
+        document.write(subtracting(2, 3) + "<br>");
+        document.write(multiplication(2, 3) + "<br>");
+        document.write(division(2, 3) + "<br><hr>");
+
+        function mathOperation(arg1, arg2, operation) {
+
+            switch (operation) {
+                case "+":
+                    return sum(arg1, arg2);
+                case "-":
+                    return subtracting(arg1, arg2);
+                case "*":
+                    return multiplication(arg1, arg2);
+                case "/":
+                    return division(arg1, arg2);
+
+                default:
+                    document.write("Введено некорректное значение <br>");
+                    return undefined;
+            }
+
+        }
+
+
+        document.write(mathOperation(10, 5, prompt("Введите знак математической операции")) + "<br>");
+
+    </script>
+</body>
+
+</html>
