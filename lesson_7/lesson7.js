@@ -14,9 +14,9 @@ function init() {
 
     var wrap = document.getElementsByClassName('wrap')[0];
     // Подгоняем размер контейнера под игровое поле
-    
-	/*
-	if (16 * (FIELD_SIZE_X + 1) < 380) {
+
+    /*
+    if (16 * (FIELD_SIZE_X + 1) < 380) {
         wrap.style.width = '380px';
     }
     else {
@@ -28,7 +28,7 @@ function init() {
     document.getElementById('snake-start').addEventListener('click', startGame);
     document.getElementById('snake-renew').addEventListener('click', refreshGame);
 
-// Отслеживание клавиш клавиатуры
+    // Отслеживание клавиш клавиатуры
     addEventListener('keydown', changeDirection);
 }
 
@@ -172,7 +172,8 @@ function haveFood(unit) {
         check = true;
         createFood();
         score++;
-        
+        var scoreSpan = document.getElementById("score");
+        scoreSpan.innerText = score;
     }
     return check;
 }
@@ -210,7 +211,7 @@ function createFood() {
  */
 function changeDirection(e) {
     console.log(e);
-	switch (e.keyCode) {
+    switch (e.keyCode) {
         case 37: // Клавиша влево
             if (direction != 'x+') {
                 direction = 'x-'
