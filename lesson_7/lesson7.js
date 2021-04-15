@@ -129,6 +129,22 @@ function move() {
     // 1) new_unit не часть змейки
     // 2) Змейка не ушла за границу поля
     //console.log(new_unit);
+    if (new_unit === undefined) {
+        if (direction == 'x-') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x + (FIELD_SIZE_X - 1)))[0];
+            console.log(new_unit);
+        }
+        else if (direction == 'x+') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x - (FIELD_SIZE_X - 1)))[0];
+        }
+        else if (direction == 'y+') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y + (FIELD_SIZE_Y - 1)) + '-' + (coord_x))[0];
+        }
+        else if (direction == 'y-') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y - (FIELD_SIZE_Y - 1)) + '-' + (coord_x))[0];
+        }
+
+    }
     if (!isSnakeUnit(new_unit) && new_unit !== undefined && !isProblem(new_unit)) {
         // Добавление новой части змейки
         new_unit.setAttribute('class', new_unit.getAttribute('class') + ' snake-unit');
@@ -143,6 +159,7 @@ function move() {
             // удаляем хвост
             removed.setAttribute('class', classes[0] + ' ' + classes[1]);
         }
+
     }
     else {
         clearInterval(timerId);
