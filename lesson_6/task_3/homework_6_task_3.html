@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Homework_6_Task_1</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="small">
+            <img id="i1" src="small_img/i1.jpg" alt="img_1" class="img_s">
+            <img id="i2" src="small_img/i2.jpg" alt="img_2" class="img_s">
+            <img id="i3" src="small_img/i3.jpg" alt="img_3" class="img_s">
+        </div>
+        <section class="section">
+            <button id="prev" class="left" onclick="slide(-1)">&#9668;</button>
+            <div id="big_img" class="big">
+
+            </div>
+            <button id="next" class="right" onclick="slide(1)"> &#9658;</button>
+        </section>
+    </div>
+
+
+
+
+
+    <script>
+
+        var images = document.getElementsByTagName("img");
+
+        var nowId;
+        var bigId = "i4";
+        var links = ["big_img/i1.jpg", "big_img/i2.jpg", "big_img/i3.jpg"];
+        var index = 0;
+
+        function init() {
+
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = changeBigPicture;
+
+            }
+
+        }
+        function changeBigPicture(eventObj) {
+            var appDiv = document.getElementById("big_img");
+            appDiv.innerHTML = "";
+            var eventElement = eventObj.target;
+            var imageNameParts = eventElement.id.split("");
+            var src = "big_img/i" + imageNameParts[1] + ".jpg";
+            var imageDomElement = document.createElement("img");
+            imageDomElement.src = src;
+            index = imageNameParts[1] - 1;
+            appDiv.appendChild(imageDomElement);
+
+            imageDomElement.setAttribute("id", bigId);
+
+            nowId = eventObj.target.id;
+            console.log(nowId);
+
+        }
+
+        init();
+
+        function slide(v) {
+
+            var element = document.getElementById(bigId);
+
+            index = index + 1 * v;
+            if (index > links.length - 1) {
+                index = 0;
+            } else if (index < 0) {
+                index = links.length - 1;
+            }
+            element.src = links[index];
+
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

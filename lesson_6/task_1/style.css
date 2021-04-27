@@ -1,0 +1,26 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.small {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+.big {
+    align-self: center;
+}
+.img_s {
+    border: 1px solid black;
+    width: 350px;
+    height: 218px;
+}
+
+.img_b {
+    border: 1px solid black;
+    width: 650px;
+    height: 406px;
+}
